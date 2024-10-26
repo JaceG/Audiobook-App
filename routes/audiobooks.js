@@ -4,8 +4,18 @@ const express = require('express');
 // Single routing
 const router = express.Router();
 
-router.post('/add', function (req, res, next) {
+router.post('/add', async function (req, res, next) {
     console.log("Router Working");
+
+    await Audiobook.create({
+        title: 'Title',
+        author: 'Author',
+        narrator: 'Narrator',
+        description: 'Book description',
+        year: '2024',
+        file: 'file.mp3',
+        userId: Schema.Types.ObjectId
+    });
     res.end();
 })
 

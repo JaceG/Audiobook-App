@@ -1,8 +1,8 @@
 // imports
 const express = require('express');
 const mongoose = require('mongoose');
-const auth = require('./routes/auth')
-const audiobooks = require("./routes/audiobooks")
+const auth = require('./routes/auth');
+const audiobooks = require("./routes/audiobooks");
 
 // intilization
 const app = express();
