@@ -14,5 +14,5 @@ const userSchema = new Schema({
 	userId: Schema.Types.ObjectId,
 });
 
-const User = mongoose.model('user', userSchema);
-module.exports = User;
+const audiobook = mongoose.model('audiobooks', userSchema);
+module.exports = audiobook;

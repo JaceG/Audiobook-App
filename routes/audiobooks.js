@@ -1,5 +1,7 @@
 // imports
 const express = require('express');
+const audiobookMetadata = require('music-metadata');
+const Audiobook = require('../models/audiobooks');
 
 // Single routing
 const router = express.Router();
@@ -7,16 +9,23 @@ const router = express.Router();
 router.post('/add', async function (req, res, next) {
 	console.log('Router Working');
 
+	const { title, author, narrator, description, year } = req.body;
+
+	// const metadata = await audiobookMetadata.parseFile(req.file.path);
+	// console.log(metadata);
+
 	await Audiobook.create({
-		title: 'Title',
-		author: 'Author',
-		narrator: 'Narrator',
-		description: 'Book description',
-		year: '2024',
-		file: 'file.mp3',
-		userId: Schema.Types.ObjectId,
+		title,
+		author,
+		narrator,
+		description,
+		year,
+		file: req.file.path,
+		userId: req.userId,
 	});
-	res.end();
+	res.json({
+		message: 'Audiobook uploaded succesfully!',
+	});
 });
 
 router.delete('/delete', function (req, res, next) {
